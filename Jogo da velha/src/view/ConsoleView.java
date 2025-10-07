@@ -56,5 +56,43 @@ public class ConsoleView {
             }
         }
     }
-}
 
+    public void mostrarMensagem(String mensagem) {
+        System.out.println(mensagem);
+    }
+
+    public String perguntarNomeJogador(int numero) {
+        System.out.print("Nome do Jogador " + numero + ": ");
+        return leia.nextLine();
+    }
+
+    public boolean perguntarRepetir() {
+        System.out.print("Jogar novamente? (S/N): ");
+        while (true) {
+            String resp = leia.nextLine().trim().toUpperCase();
+            if (resp.equals("S")) return true;
+            if (resp.equals("N")) return false;
+            System.out.print("Resposta inválida. Digite S ou N: ");
+        }
+    }
+
+    public int menuInicial() {
+        System.out.println("1) Humano vs Humano" +
+       "\n2) Humano vs Computador" +
+       "\n3) Computador vs Computador" +
+       "\n0) Sair");
+        System.out.print("Escolha: ");
+        while (true) {
+            String line = leia.nextLine();
+            try {
+                int escolha = Integer.parseInt(line);
+                if (escolha >= 0 && escolha <= 3) {
+                    return escolha;
+                }
+                System.out.print("Opção inválida. Digite de 0 a 3: ");
+            } catch (NumberFormatException e) {
+                System.out.print("Entrada inválida. Digite um número: ");
+            }
+        }
+    }
+}
